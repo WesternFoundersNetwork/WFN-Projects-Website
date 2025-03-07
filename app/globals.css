@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 15%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 18%;
+  --card-foreground: 0 0% 100%;
+
+  --popover: 0 0% 18%;
+  --popover-foreground: 0 0% 100%;
+
+  --primary: 350 100% 85%;
+  --primary-foreground: 0 0% 15%;
+
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 70%;
+
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 25%;
+  --input: 0 0% 25%;
+  --ring: 350 100% 85%;
+
+  --radius: 0.5rem;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-[#C34B9F] via-[#D77B98] to-[#E9A892] bg-clip-text text-transparent;
+}
+
+.gradient-text-glow {
+  text-shadow: 0 0 10px rgba(225, 140, 160, 0.5), 0 0 20px rgba(232, 184, 168, 0.3);
+}
+
+body {
+  background-color: rgb(38, 38, 38);
+  color: white;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
