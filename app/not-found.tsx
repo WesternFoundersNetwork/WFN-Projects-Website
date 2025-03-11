@@ -9,7 +9,7 @@ export default function NotFound() {
         <h1 className="text-7xl md:text-9xl font-bold gradient-text mb-4">404</h1>
         <h2 className="text-3xl md:text-4xl font-semibold mb-6">Page Not Found</h2>
         <p className="text-xl text-gray-300 mb-8 max-w-md mx-auto">
-          Oops! It seems like you've ventured into uncharted territory. Let's get you back to the innovation hub.
+          Oops! It seems like you`&apos;ve ventured into uncharted territory. Let`&apos;s get you back to the innovation hub.
         </p>
         <div className="relative w-64 h-64 mx-auto mb-8">
           <div className="absolute inset-0 bg-gradient-to-r from-[#e18ca0] to-[#e8b8a8] rounded-full animate-pulse"></div>

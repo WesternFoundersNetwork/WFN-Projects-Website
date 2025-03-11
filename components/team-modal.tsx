@@ -1,18 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
-
-interface TeamMember {
-  name: string
-  role: string
-  bio: string
-}
-
-interface Team {
-  name: string
-  description: string
-  members: TeamMember[]
-  image: string
-}
+import { Team } from "@/types"
 
 interface TeamModalProps {
   team: Team
@@ -28,7 +16,7 @@ export default function TeamModal({ team, onClose }: TeamModalProps) {
           <DialogDescription className="text-gray-300">{team.description}</DialogDescription>
         </DialogHeader>
         <ScrollArea className="mt-4 max-h-[60vh]">
-          {team.members.map((member, index) => (
+          {team.directors.map((member, index) => (
             <div key={index} className="mb-6 last:mb-0">
               <h3 className="text-lg font-semibold gradient-text">{member.name}</h3>
               <p className="text-sm text-gray-400 mb-2">{member.role}</p>

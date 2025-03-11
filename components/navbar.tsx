@@ -24,14 +24,11 @@ export default function Navbar() {
             <Link href="/teams" className="text-gray-300 hover:text-white transition-colors">
               Projects
             </Link>
-            <Link href="/project-demo" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/demo-day" className="text-gray-300 hover:text-white transition-colors">
               Demo Day
             </Link>
-            <Link href="/awards" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/award" className="text-gray-300 hover:text-white transition-colors">
               Awards
-            </Link>
-            <Link href="/alumni" className="text-gray-300 hover:text-white transition-colors">
-              Alumni
             </Link>
           </nav>
 
@@ -68,25 +65,18 @@ export default function Navbar() {
                 Projects
               </Link>
               <Link
-                href="/project-demo"
+                href="/demo-day"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Demo Day
               </Link>
               <Link
-                href="/awards"
+                href="/award"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Awards
-              </Link>
-              <Link
-                href="/alumni"
-                className="text-gray-300 hover:text-white transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Alumni
               </Link>
               <div className="pt-2">
                 <Link href='https://westernusc.store/western-founders-network/'>
