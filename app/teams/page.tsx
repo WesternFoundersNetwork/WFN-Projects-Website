@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
 import { years } from "@/constants/year-data"
 
@@ -13,7 +12,7 @@ export default function TeamsPage() {
         <h1 className="text-4xl md:text-5xl font-bold gradient-text mb-12 text-center">Our Teams</h1>
         <p className="text-xl text-gray-300 mb-16 text-center max-w-3xl mx-auto">
           Discover the innovative minds behind our projects. Each team brings unique skills and passion to drive our
-          club's success.
+          club&apos;s success.
         </p>
         <div className="space-y-16">
           {years.map((yearData, yearIndex) => {

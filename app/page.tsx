@@ -3,13 +3,10 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import Footer from "@/components/footer"
-import Navbar from "@/components/navbar"
 import YearlyTeamSection from "@/components/yearly-team-section"
 import TeamModal from "@/components/team-modal"
 import Link from "next/link"
 import AlumniPlacements from "@/components/alumni-placements"
-import Image from "next/image"
 import { years } from "@/constants/year-data"
 import { TeamYear, Team } from "@/types"
 
@@ -110,6 +107,7 @@ export default function Home() {
           {years.map((year: TeamYear, index: number) => {
             return (
               <YearlyTeamSection
+                key={index}
                 year={year.year}
                 teams={year.teams}
                 executives={year.executives}

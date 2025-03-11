@@ -35,7 +35,7 @@ export default function AlumniPlacements() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-8 text-center">Alumni Placements</h2>
           <p className="text-xl text-gray-300 mb-12 text-center max-w-3xl mx-auto">
-            Our alumni have gone on to work at some of the world's leading technology companies, making significant
+            Our alumni have gone on to work at some of the world&apos;s leading technology companies, making significant
             impacts in their fields.
           </p>
           <Carousel
