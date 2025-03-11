@@ -3,28 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-
-interface TeamMember {
-  name: string
-  role: string
-  bio: string
-  image: string
-}
-
-interface ProjectMilestone {
-  date: string
-  title: string
-  description: string
-}
-
-interface Project {
-  name: string
-  description: string
-  goals: string[]
-  timeline: ProjectMilestone[]
-  images: string[]
-  socialImages: string[]
-}
+import { TeamMember, Project } from "@/types"
 
 interface TeamSubPageProps {
   teamName: string
@@ -115,7 +94,7 @@ export default function TeamSubPage({ teamName, vp, directors, project }: TeamSu
                 <TabsContent value="goals">
                   <h3 className="text-2xl font-semibold gradient-text mb-4">Project Goals</h3>
                   <ul className="list-disc list-inside text-gray-300 space-y-2">
-                    {project.goals.map((goal, index) => (
+                    {project.goals && project.goals.map((goal, index) => (
                       <li key={index}>{goal}</li>
                     ))}
                   </ul>
@@ -123,7 +102,7 @@ export default function TeamSubPage({ teamName, vp, directors, project }: TeamSu
                 <TabsContent value="timeline">
                   <h3 className="text-2xl font-semibold gradient-text mb-4">Project Timeline</h3>
                   <div className="space-y-4">
-                    {project.timeline.map((milestone, index) => (
+                    {project.timeline && project.timeline.map((milestone, index) => (
                       <div key={index} className="flex items-start">
                         <div className="bg-[#e18ca0] rounded-full w-3 h-3 mt-2 mr-4 flex-shrink-0"></div>
                         <div>
@@ -165,7 +144,7 @@ export default function TeamSubPage({ teamName, vp, directors, project }: TeamSu
         <div>
           <h2 className="text-3xl font-bold gradient-text mb-8">Team in Action</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {project.socialImages.map((image, index) => (
+            {project.socialImages && project.socialImages.map((image, index) => (
               <div key={index} className="aspect-square relative overflow-hidden rounded-lg">
                 <Image
                   src={image || "/placeholder.svg"}

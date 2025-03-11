@@ -1,18 +1,19 @@
 import TeamSubPage from "@/components/team-sub-page"
-import { teamData } from "@/constants/team-data"
+import allTeamData from "@/constants/team-data"
+import NotFound from "@/app/not-found"
 
 export default function TeamPage({ params }: { params: { teamSlug: string } }) {
-  const team = teamData.find((t) => t.slug === params.teamSlug)
+  const team = allTeamData.find((t) => t.slug === params.teamSlug)
 
-  if (!team) {
-    return <div>Team not found</div>
+  if (!team || !team.project) {
+    return <NotFound/>
   }
 
   return <TeamSubPage teamName={team.name} vp={team.vp} directors={team.directors} project={team.project} />
 }
 
 export function generateStaticParams() {
-  return teamData.map((team) => ({
+  return allTeamData.map((team) => ({
     teamSlug: team.slug,
   }))
 }

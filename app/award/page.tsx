@@ -1,72 +1,53 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
-import { ExternalLink, Github } from "lucide-react"
-
-interface Award {
-  year: number
-  hackathon: string
-  projectName: string
-  teamMembers: string[]
-  alumni: string[]
-  repoLink?: string
-  devpostLink?: string
-  description: string
-}
-
-const awardsData: Award[] = [
-  {
-    year: 2023,
-    hackathon: "HackMIT",
-    projectName: "EcoTrack",
-    teamMembers: ["Alice Smith", "Bob Johnson", "Charlie Brown"],
-    alumni: ["Alice Smith"],
-    repoLink: "https://github.com/ecotrack",
-    devpostLink: "https://devpost.com/software/ecotrack",
-    description: "A sustainability tracking app that won first place in the Environmental Tech category.",
-  },
-  {
-    year: 2022,
-    hackathon: "CalHacks",
-    projectName: "MindMeld",
-    teamMembers: ["David Lee", "Eve Taylor", "Frank Wilson"],
-    alumni: ["David Lee", "Eve Taylor"],
-    repoLink: "https://github.com/mindmeld",
-    devpostLink: "https://devpost.com/software/mindmeld",
-    description: "An AI-powered collaborative learning platform that secured the Best Education Hack award.",
-  },
-  // Add more awards data as needed
-]
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { ExternalLink, Github } from "lucide-react";
+import { AwardYear } from "@/types";
+import { awardsData } from "@/constants/awards-data";
 
 export default function AwardsPage() {
-  const years = [...new Set(awardsData.map((award) => award.year))].sort((a, b) => b - a)
-
   return (
     <div className="min-h-screen bg-[#262626] text-white py-20">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold gradient-text mb-12 text-center">Hackathon Awards</h1>
+        <h1 className="text-4xl md:text-5xl font-bold gradient-text mb-12 text-center">
+          Hackathon Awards
+        </h1>
         <p className="text-xl text-gray-300 mb-12 text-center max-w-3xl mx-auto">
-          Celebrating the innovative projects and achievements of our club members in various hackathons.
+          Celebrating the innovative projects and achievements of projects directors
+          at various hackathons.
         </p>
-        {years.map((year) => (
-          <div key={year} className="mb-12">
-            <h2 className="text-3xl font-bold gradient-text mb-6">{year}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {awardsData
-                .filter((award) => award.year === year)
-                .map((award, index) => (
+
+        {awardsData
+          .sort((a, b) => {
+            const extractYear = (yearStr: string) => {
+              const match = yearStr.match(/\d{4}/); 
+              return match ? parseInt(match[0], 10) : 0; 
+            };
+
+            return extractYear(b.year) - extractYear(a.year);
+          })
+          .map(({ year, awards }) => (
+            <div key={year} className="mb-12">
+              <h2 className="text-3xl font-bold gradient-text mb-6">{year}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {awards.map((award, index) => (
                   <Card key={index} className="bg-[#303030] border-white/10">
                     <CardContent className="p-6">
-                      <h3 className="text-2xl font-semibold gradient-text mb-2">{award.projectName}</h3>
-                      <p className="text-gray-300 mb-4">{award.hackathon}</p>
-                      <p className="text-gray-400 mb-4">{award.description}</p>
+                      <h3 className="text-2xl font-semibold gradient-text mb-2">
+                        {award.projectName || "Untitled Project"}
+                      </h3>
+                      <p className="text-gray-300 mb-2">{award.hackathon}</p>
+                      <p className="text-gray-400 mb-4">{award.awardTitle}</p>
                       <div className="mb-4">
-                        <h4 className="text-lg font-semibold mb-2">Team Members:</h4>
+                        <h4 className="text-lg font-semibold mb-2">
+                          Team Members:
+                        </h4>
                         <div className="flex flex-wrap gap-2">
                           {award.teamMembers.map((member, i) => (
                             <Badge key={i} variant="secondary">
-                              {member} {award.alumni.includes(member) && "(Alumni)"}
-                            </Badge>
+                              {member}{" "}
+                              {Array.isArray(award?.alumni) && award.alumni.includes(member) && "(Alumni)"}
+                              </Badge>
                           ))}
                         </div>
                       </div>
@@ -97,11 +78,10 @@ export default function AwardsPage() {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
-  )
+  );
 }
-
