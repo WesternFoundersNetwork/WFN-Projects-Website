@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
-import { AwardYear } from "@/types";
 import { awardsData } from "@/constants/awards-data";
 
 export default function AwardsPage() {
@@ -44,10 +43,10 @@ export default function AwardsPage() {
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {award.teamMembers.map((member, i) => (
-                            <Badge key={i} variant="secondary">
+                            <Badge key={`${award.projectName}-${i}`} variant="secondary">
                               {member}{" "}
                               {Array.isArray(award?.alumni) && award.alumni.includes(member) && "(Alumni)"}
-                              </Badge>
+                            </Badge>
                           ))}
                         </div>
                       </div>
