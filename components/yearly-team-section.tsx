@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Team, TeamMember } from "@/types";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-
+import Link from "next/link";
 interface YearlyTeamSectionProps {
   year: string;
   teams: Team[];
@@ -12,6 +12,7 @@ interface YearlyTeamSectionProps {
 }
 
 export default function YearlyTeamSection({ year, teams, executives, onTeamClick }: YearlyTeamSectionProps) {
+
   return (
     <div className="mb-20 last:mb-0">
       {/* Year Header */}
@@ -32,12 +33,23 @@ export default function YearlyTeamSection({ year, teams, executives, onTeamClick
             <CardContent className="p-6">
               <h4 className="text-xl font-bold gradient-text mb-2">{team.name}</h4>
               <p className="text-gray-300 mb-4">{team.description}</p>
-              <Button
-                onClick={() => onTeamClick(team)}
-                className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
-              >
-                Meet the Team
-              </Button>
+
+              {team.slug ? (
+                <Link href={`/teams/${team.slug}`}>
+                  <Button
+                    className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                  >
+                    Meet the Team
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  onClick={() => onTeamClick(team)}
+                  className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                >
+                  Meet the Team
+                </Button>
+              )}
             </CardContent>
           </Card>
         ))}
@@ -45,9 +57,9 @@ export default function YearlyTeamSection({ year, teams, executives, onTeamClick
 
       {/* Executives Section */}
       {executives.length > 0 && (
-        <div className="text-center">
+        <div className="text-left">
           <h4 className="text-2xl font-bold gradient-text mb-4">Executive Team</h4>
-          <p className="text-gray-300 mb-6">Meet the leadership team guiding this year.</p>
+          <p className="text-gray-300 mb-6">Meet some of the amazing executive team helping projects become a reality.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {executives.map((executive, index) => (
@@ -57,11 +69,14 @@ export default function YearlyTeamSection({ year, teams, executives, onTeamClick
                     <div className="relative h-48 w-full overflow-hidden">
                       <Image src={executive.image || "/placeholder.svg"} alt={executive.name} fill className="object-cover" />
                     </div>
-                    <CardContent className="p-6 text-center">
+                    <CardContent className="p-6 text-left">
                       <h4 className="text-xl font-bold gradient-text mb-2">{executive.name}</h4>
-                      <p className="text-gray-300">{executive.role}</p>
-                      <Button className="mt-4 bg-[#e18ca0] hover:bg-[#e8b8a8] text-white w-full">
-                        Learn More
+                      <p className="text-gray-300 font-bold mb-2">{executive.role}</p>
+                      <p className="text-gray-300 mb-10">{executive.bio}</p>
+                      <Button
+                        className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                      >
+                        Meet the Team
                       </Button>
                     </CardContent>
                   </Card>

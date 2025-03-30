@@ -4,6 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
+
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,7 +15,12 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold gradient-text">WFN</span>
+            <Image 
+              src="/logo.png"
+              width={65}
+              height={65}
+              alt="logo"
+            />
           </Link>
 
           {/* Desktop Navigation */}

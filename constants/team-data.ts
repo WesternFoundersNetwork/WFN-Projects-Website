@@ -297,7 +297,7 @@ export const executives2024_2025: TeamMember[] = [
     name: "Stephanie Sheng",
     role: "Project Lead",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    //image: "./teams/2025/stephanie-sheng/stephanie.png"
+    image: "/teams/2025/stephanie-sheng/stephanie.png"
   },
   {
     name: "Eli Bensimon 2025",

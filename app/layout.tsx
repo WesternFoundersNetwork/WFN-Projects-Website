@@ -5,19 +5,19 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer";
 
 
-const geistSans = localFont({
-  src: "/fonts/GeistVF.woff",
+const archivoMedium = localFont({
+  src: "/fonts/Archivo-Medium.ttf",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 
-const geistMono = localFont({
-  src: "/fonts/GeistMonoVF.woff",
+const archivoRegular = localFont({
+  src: "/fonts/Archivo-Regular.ttf",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
-//console.log(geistMono);
+console.log(archivoMedium);
 
 export const metadata: Metadata = {
   title: "WFN Projects",
@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" href="/favicon.ico" />
 
-      <body className={` ${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={` ${archivoMedium.variable} ${archivoRegular.variable} antialiased`}>
         <Navbar />
         <div className="mt-16">
           {children}

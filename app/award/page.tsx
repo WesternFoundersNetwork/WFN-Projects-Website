@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
 import { awardsData } from "@/constants/awards-data";
+import { TeamMember, Award } from "@/types";
 
 export default function AwardsPage() {
   return (
@@ -29,7 +30,7 @@ export default function AwardsPage() {
             <div key={year} className="mb-12">
               <h2 className="text-3xl font-bold gradient-text mb-6">{year}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {awards.map((award, index) => (
+                {awards.map((award: Award, index: number) => (
                   <Card key={index} className="bg-[#303030] border-white/10">
                     <CardContent className="p-6">
                       <h3 className="text-2xl font-semibold gradient-text mb-2">
@@ -37,12 +38,14 @@ export default function AwardsPage() {
                       </h3>
                       <p className="text-gray-300 mb-2">{award.hackathon}</p>
                       <p className="text-gray-400 mb-4">{award.awardTitle}</p>
+                      <p className="text-white-400 mb-4">{award.description}</p>
+
                       <div className="mb-4">
                         <h4 className="text-lg font-semibold mb-2">
                           Team Members:
                         </h4>
                         <div className="flex flex-wrap gap-2">
-                          {award.teamMembers.map((member, i) => (
+                          {award.teamMembers.map((member: string, i: number) => (
                             <Badge key={`${award.projectName}-${i}`} variant="secondary">
                               {member}{" "}
                               {Array.isArray(award?.alumni) && award.alumni.includes(member) && "(Alumni)"}

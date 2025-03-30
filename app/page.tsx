@@ -74,8 +74,7 @@ export default function Home() {
             <div className="bg-[#303030] p-8 rounded-xl border border-white/10 hover:border-white/20 transition-all">
               <h3 className="text-xl font-bold gradient-text mb-3">Community</h3>
               <p className="text-gray-300">
-                As WFN’s largest portfolio, we connect members to FAANG alumni and top industry professionals. Our strong network fosters lasting relationships within WFN and beyond, creating opportunities for growth and collaboration.
-
+                As WFN&apos;s largest portfolio, we connect members to FAANG alumni and top industry professionals. Our strong network fosters lasting relationships within WFN and beyond, creating opportunities for growth and collaboration.
               </p>
             </div>
 
@@ -83,7 +82,6 @@ export default function Home() {
               <h3 className="text-xl font-bold gradient-text mb-3">Hands-On Experience</h3>
               <p className="text-gray-300">
                 We immerse directors in full-stack and web technologies, ensuring they build strong technical skills. Through demo days and hackathons, directors gain real-world experience in the projects they build.
-
               </p>
             </div>
           </div>
